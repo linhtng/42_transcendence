@@ -63,7 +63,7 @@ cd 42_transcendence
 ```Run make
 make
 ```
-* On your browser, navigate to `https://localhost:8443` and have fun! (Note: There is a warning generated due to a self-signed certificate)
+* On your browser, navigate to `https://localhost:8443`, register an account to start playing and have fun! (Note: There is a warning generated due to a self-signed certificate)
 
 * To uninstall:
 
