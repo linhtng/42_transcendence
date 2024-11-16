@@ -1,171 +1,84 @@
-# 🐝 Bee pong!
+# 🐝 BeePong!
+
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=yellow) ![Django REST Framework](https://img.shields.io/badge/Django_REST_Framework-092E20?logo=django&logoColor=white) ![Daphne](https://img.shields.io/badge/Daphne-512BD4?logo=django&logoColor=white)  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white) 
+
+ ![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white)  ![OAuth](https://img.shields.io/badge/OAuth-4285F4?logo=oauth&logoColor=white)
+![HTTPS](https://img.shields.io/badge/HTTPS-565656?logo=letsencrypt&logoColor=white) ![Docker Compose](https://img.shields.io/badge/Docker_Compose-1DA1F2?logo=docker&logoColor=white)
+
+BeePong, or 42 name `ft_transcendence`, is the last core project we did at Hive Helsinki, presenting a modern reinterpretation of the classic Pong game. Leveraging a robust Django-powered backend and a single page application (SPA) vanilla JavaScript frontend, this project introduces a remote multiplayer experience with real-time interactions and AI opponent. 
+
+
+## Overview
 This group project is about creating a website for the mighty Pong contest! 🏓
 
 ![BeePong design vision](BeePong_vision_240615.png)
 [Figma](https://www.figma.com/design/42yVXZOi6yLRxybTmu8lhG/BEE-PONG?node-id=0-1&t=JObdYVC2Pk32AxSm-1)
 
+## Key Features and Modules
 
-## Ways of working:
-- Commit messages chould be in this format: `issue_number commit_message`, where commit_message follows [Conventional Commits standard](https://www.conventionalcommits.org/en/v1.0.0/)
-- When creating a pull request, mention everyone and assign one person to review
+- **Web Gameplay**: Remote Play functionality with real-time interactions using WebSocket
+- **User Management**: Remote authentication using OAuth
+- **Server-side Pong Game** : implementing the game logic in the server side, enabling interaction through both a web interface and CLI while offering an
+API for easy access to game resources and features
 
-## 13.6.2024 meeting
-- Wing: continue front-end
-- Lionel: 
-- Lera: Figma error messages for form
-- Linh: 
-- Diego: Will meet Linh on Tuesday
+## Modules
 
-## Architecture
-### Game
-- id
-- player1
-  - id
-  - score
-- player2
-  - id
-  - score
-- state (PENDING, ONGOING, FINISHED)
-- winner player
-- timestamp(s)
-#### Actions for Game:
-- GET page
-- POST /games/ - Create game
-    - Payload: {player1 id, player2 id}
-- PUT /games/{gameId}/update - Update game
-    - Payload: {player1 score, player2 score}
-- PUT /games/{gameId}/finish - Finish game
+- **Web**
+	- *Major module*: Use a framework as backend :white_check_mark:
+	- *Minor module*: Use a front-end framework or toolkit :white_check_mark:
+	- *Minor module*: Use a database for the backend :white_check_mark:
+- **User Management**
+	- *Major module*: Implementing a remote authentication :white_check_mark:
+- **Gameplay and User Experience**
+	- *Major module*: Remote players :white_check_mark:
 
-### Tournament
-- id
-- quarter1 (link to Game)
-- quarter2
-- quarter3
-- quarter4
-- semi1
-- semi2
-- final
-- name
-- description
-- state (PENDING, ONGOING, FINISHED)
-- num_players (2,4,8)
-- players (links to players)
-- winner player
-- timestamp(s)
-#### Actions for Tournament:
-- GET /tournament - Get all
-- GET /tournament/{id} - Get one
-- POST /tournament - Create
-  - Payload: user id (or maybe none bc we have cookie?)
-  - Returns: created tournament whole object
-- PUT /tournament/{id}/join Join (also starts the tournament when it's full)
-  - Payload: user id (or maybe none bc we have cookie?)
-  - Returns: created tournament id (or whole object?)
-- PUT /tournament/{id}/leave - Leave
-  - Payload: user id
-- Refresh tournament (when one of the games is finished, would probably be done from a websocket function but unsure)
+- **AI-Algo**
+	- *Major module*: Introduce an AI Opponent :white_check_mark:
+   
+- **Accessibility**
+	- *Minor module*: Expanding Browser Compatibility :white_check_mark:
 
-### Player
-- id
-- username
-- alias
-- is_registered
-- is_online ?
-- ? auth info ?
-- current tournament (link to Tournament)
-#### Actions for Player:
-- GET /user - get your profile
-- POST /register - create
-  - Payload: user info
-  - Returns: created user (or just id)
-- POST /login
-- PUT /user/{id}/alias - update alias
-  - Payload: new alias
-  - Returns: updated user (or just id)
+## Practical details:
+- You can choose to either play a single match or in a tournament
+- Different players can play on the same computer or from different computers on the same network
+- In single match you will play against an AI
+- The tournament is a simple single-elimination tournament, the players are randomly matched against each other and the winner of each match continues
 
+## Installation
 
+* Clone this repository:
 
-## 8.6.2024 meeting
-First priority:
-- Create board (linh)
-- Create docker setup
-- Create prototype (lera)
-- Create dummy project (database, devops, back, front)
+```shell
+https://github.com/linhtng/42_transcendence.git
+```
+* Go to the project folder:
 
-## Features plan C:
-- Web:
-    - YES 1 Major module: Use a Framework as backend
-    - MAYBE 0.5 Minor module: Use a front-end framework or toolkit
-    - YES 0.5 Minor module: Use a database for the backend
+```shell
+cd 42_transcendence
+```
+* Fill the `.env`-file values as necessary
 
-- Gameplay and user experience:
-    - MAYBE 1 Major module: Remote players
-    - UNLIKELY 1 Major module: Multiplayers (2 vs. 2)
+```Run make
+make
+```
+* On your browser, navigate to `https://localhost:8443` and have fun! (Note: There is a warning generated due to a self-signed certificate)
 
-- User management
-    - MAYBE 1 Auth
-    - MAYBE 1 Remote auth
- 
-- AI algo
-    - MAYBE 1 AI opponent
+* To uninstall:
 
-- Devops
-    - PROBABLY 1 Major module: Infrastructure Setup for Log Management
-    - MAYBE 0.5 Minor monitoring
-    - PROBABLY 1 Major module: Designing the Backend as Microservices
-
-- Accessibility
-    - YES 0.5 Minor module: Expanding Browser Compatibility.
-    - YES 0.5 Minor module: Multiple language supports.
-    - YES 0.5 Accessibility
-
-- Server-Side Pong
-    - MAYBE 1 Major module: Replacing Basic Pong with Server-Side Pong and Implementing an API
-
-YES: 3 backend, database, accessibility
-
-PROBABLY: 1 devops: ELK
-
-MAYBE:
-- 4 Remote + multiplayer + server-side + microservices
-- 2 AI opponent + more devops + bootstrap
-- + 4 Remote auth + remote playing + server-side + 1 DevOps module else than microservices
-
-June 8th plan:
-Web
-- Major module: Use a Framework as backend (1)
-- Minor module: Use a database for the backend (0.5)
-- 
-User Management
-Major module: Implementing a remote authentication (1)
-
-Gameplay and user experience
-- Major module: Remote players (1)
-  
-AI-Algo
-- Major module: Introduce an AI Opponent (1)
-  
-Accessibility
-- Minor module: Expanding Browser Compatibility (0.5)
-- Minor module: Multiple language supports (0.5)
-  
-Server-Side Pong
-- Major module: Replacing Basic Pong with Server-Side Pong and Implementing an API (1)
-  
-Dev-op: to be decided (1)
-
-Sum: 7.5
-
-## Memo
-
-### To run psql in a docker container
-docker exec -it *container_id* psql -U *my_user* -d *my_db* --password
+```
+make clean_all
+```
 
 ## Resources
-__Inspiration__
-- [Agile and Documentation in ft_transcendence](https://medium.com/@glukas94/ft-transcendence-semana-1-3b641e683339)
-- [ft_transcendence Project Architecture Overview](https://github.com/trancendering/ft_transcendence/blob/main/ARCHITECTURE.md)
+- [Mastering Django: Essential Design Patterns and Best Practices](https://www.linkedin.com/pulse/mastering-django-essential-design-patterns-best-mohammad-fa-alfard-zsg3f/)
+- [Django Project Architecture: The best project skeleton ever](https://rajanmandanka.medium.com/django-project-architecture-the-best-project-skeleton-ever-a184143f1c82)
 - [How the Django-Docker-Frontend system can be connected](https://medium.com/@bekojix0660/42-ft-transcendence-0d952c94ea05)
-- [Architecture & database diagram](https://github.com/zwzone/ft_transcendence)
 - [42 API](https://api.intra.42.fr/apidoc) | Documentation to build an application with 42 API. | `Intra` |
 - [PostgreSQL commands and flags](https://hasura.io/blog/top-psql-commands-and-flags-you-need-to-know-postgresql)
+- [Website vulnerability concerns 101](https://hacksplaining.com/lessons)
+
+---
+
+This project represents a collaborative effort at Hive Helsinki, embodying the spirit of innovation and the challenge of modern web development. Buzzing into the world of `BeePong` and experience the fun of online Pong gameplay, see who is the queen bee.
