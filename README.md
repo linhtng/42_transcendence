@@ -12,7 +12,16 @@ https://github.com/user-attachments/assets/50024e4e-6004-4717-8435-bc208f7b2b46
  ![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white)  ![OAuth](https://img.shields.io/badge/OAuth-4285F4?logo=oauth&logoColor=white)
 ![HTTPS](https://img.shields.io/badge/HTTPS-565656?logo=letsencrypt&logoColor=white) ![Docker Compose](https://img.shields.io/badge/Docker_Compose-1DA1F2?logo=docker&logoColor=white)
 
-BeePong, or 42 name `ft_transcendence`, is the last core project we did at Hive Helsinki, presenting a modern reinterpretation of the classic Pong game. Leveraging a robust Django-powered backend and a single page application (SPA) vanilla JavaScript frontend, this project introduces a remote multiplayer experience with real-time interactions and AI opponent. 
+BeePong, or 42 name `ft_transcendence`, is the last core project we did at Hive Helsinki, presenting a modern reinterpretation of the classic Pong game. Leveraging a robust Django-powered backend and a single page application (SPA) vanilla JavaScript frontend, this project introduces a remote multiplayer experience with real-time interactions and AI opponent.
+
+### My Contributions  
+In this collaborative project, I was primarily responsible for backend development and deployment setup. My key contributions include:  
+- **AI Opponent Development:** Created an AI opponent, allowing users to play solo games against a computer-controlled adversary.  
+- **Cybersecurity Research & Testing:** Conducted basic security research and manual testing to safeguard against SQL injections and XSS vulnerabilities.  
+- **OAuth 2.0 Authentication:** Implemented secure sign-in using our school's internal intra system, ensuring a seamless and secure authentication process.
+- **WebSocket Integration with Daphne:** Configured Daphne service for secure WebSocket connections, enabling real-time communication on the tournament lobby page.
+- **Code Refactoring & Organization:** Restructured the codebase to improve maintainability, separating functionalities into distinct Django apps for better organization.
+
 
 
 ## Overview
